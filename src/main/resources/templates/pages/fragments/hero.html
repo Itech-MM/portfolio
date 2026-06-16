@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+  <section th:fragment="hero" class="hero-section" id="home">
+    <canvas id="hero-dots"></canvas>
+    <div class="hero-container">
+      <div class="hero-content reveal-on-scroll">
+        <h1 class="hero-title">
+          <span class="hero-accent">Flexitech</span> – fresh code, solid foundations
+        </h1>
+        <p class="hero-subtitle">
+          Flexitech: A young, ambitious collective of developers and designers. We build clean, modern web solutions – and we’re just getting started. Let’s create something great together.
+        </p>
+        <div class="hero-buttons">
+          <a class="btn-primary text-decoration-none"  th:href="@{/start-project}" >
+            <i class="fas fa-paper-plane"></i> Start a project
+          </a>
+          <a class="btn-secondary text-decoration-none" href="#projects">
+            <i class="fas fa-eye"></i> Our work
+          </a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item reveal-on-scroll delay-1">
+          <i class="fas fa-smile-wink"></i>
+          <span class="stat-number">2</span>
+          <span class="stat-label">happy clients</span>
+        </div>
+        <div class="stat-item reveal-on-scroll delay-2">
+          <i class="fas fa-code-branch"></i>
+          <span class="stat-number">2</span>
+          <span class="stat-label">projects shipped</span>
+        </div>
+        <div class="stat-item reveal-on-scroll delay-3">
+          <i class="fas fa-calendar-alt"></i>
+          <span class="stat-number">2025</span>
+          <span class="stat-label">founded</span>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    const canvas = document.getElementById('hero-dots');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const particleCount = 65;
+
+    function resizeCanvas() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.radius = Math.random() * 1.4 + 0.8;
+        this.vx = (Math.random() - 0.5) * 0.25;
+        this.vy = (Math.random() - 0.5) * 0.25;
+        this.opacity = Math.random() * 0.5 + 0.2;
+        this.flashSpeed = (Math.random() * 0.015 + 0.005) * (Math.random() < 0.5 ? 1 : -1);
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        
+        if (this.x < 0) this.x = canvas.width;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.y < 0) this.y = canvas.height;
+        if (this.y > canvas.height) this.y = 0;
+
+        this.opacity += this.flashSpeed;
+        if (this.opacity >= 0.85 || this.opacity <= 0.15) {
+          this.flashSpeed = -this.flashSpeed;
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(180, 200, 255, ${this.opacity})`;
+        ctx.shadowBlur = 4;
+        ctx.shadowColor = 'rgba(180, 200, 255, 0.5)';
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        if (!motionQuery.matches) {
+          p.update();
+        }
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+    
+    const resizeObserver = new ResizeObserver(() => {
+      resizeCanvas();
+    });
+    resizeObserver.observe(document.getElementById('home'));
+    </script>
+  </section>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="flip-cards.css" />
+</head>
+<body>
+
+    <section th:fragment="team-showcase" class="team-showcase-section" id="team">
+        <div class="team-header reveal-on-scroll">
+            <h2><i class="fas fa-users"></i> Core team</h2>
+            <p>Meet the humans behind the code</p>
+        </div>
+
+        <div class="team-grid">
+
+            <div class="flip-card-3d reveal-on-scroll delay-1">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="front-banner"></div>
+                        <div class="front-banner-grid"></div>
+                        <span class="front-hint"><i class="fas fa-sync-alt"></i> hover</span>
+                        <div class="front-avatar-wrap">
+							<div class="front-avatar">
+								<img th:src="@{/images/profiles/szm-profile.png}" alt="Sai Zaw Myint">
+								<span class="front-status-dot"></span>
+							</div>
+                        </div>
+                        <div class="front-body">
+                            <div class="front-name">Sai Zaw Myint</div>
+                            <div class="front-job">
+                                <i class="fas fa-laptop-code"></i> Senior Software Engineer
+                            </div>
+                            <div class="front-location">
+                                <i class="fas fa-map-marker-alt"></i> Myanmar · Remote
+                            </div>
+                            <div class="front-tagline">
+                                <i class="fas fa-quote-left"></i> clean code &amp; innovation <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="back-accent-bar"></div>
+                        <div class="back-header">
+                            <i class="fas fa-user-astronaut"></i> <span class="back-header-name">Sai Zaw Myint</span>
+                        </div>
+                        <div class="back-text">4+ years full-stack experience in Java EE, Spring Boot, Hibernate, ANPR &amp; system integration. Passionate about scalable solutions and team collaboration.</div>
+                        <div class="skill-icons">
+                            <i class="fab fa-java"></i> <i class="fas fa-leaf"></i> <i class="fa-brands fa-flutter"></i> <i class="fa-solid fa-hashtag"></i> <i class="fab fa-js"></i> <i class="fas fa-database"></i>
+                        </div>
+                        <div class="contact-row">
+                            <a href="https://github.com/Itech-MM" target="_blank"><i class="fab fa-github"></i></a> 
+                            <a href="https://www.linkedin.com/in/sai-zaw-myint-4b9653227" target="_blank"><i class="fab fa-linkedin-in"></i></a> 
+                            <a href="mailto:itech.saizawmyint@gmail.com"><i class="fas fa-envelope"></i></a> 
+                            <a href="tel:+959883360492"><i class="fas fa-phone-alt"></i></a>
+                        </div>
+                        <div class="back-footer-note">
+                            <i class="fas fa-trophy"></i> flexitech founder · team-leader · open for collab
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card-3d reveal-on-scroll delay-2">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="front-banner"></div>
+                        <div class="front-banner-grid"></div>
+                        <span class="front-hint"><i class="fas fa-sync-alt"></i> hover</span>
+                        <div class="front-avatar-wrap">
+							<div class="front-avatar">
+								<img th:src="@{/images/profiles/zlh-profile.png}" alt="Zaw Lwin Tun">
+								<span class="front-status-dot"></span>
+							</div>
+                        </div>
+                        <div class="front-body">
+                            <div class="front-name">Zaw Lwin Tun (Leo)</div>
+                            <div class="front-job">
+                                <i class="fas fa-laptop-code"></i> Java Software Engineer
+                            </div>
+                            <div class="front-location">
+                                <i class="fas fa-map-marker-alt"></i> Remote / Thailand
+                            </div>
+                            <div class="front-tagline">
+                                <i class="fas fa-quote-left"></i> clean code &amp; cloud journey <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="back-accent-bar"></div>
+                        <div class="back-header">
+                            <i class="fas fa-user-astronaut"></i> <span class="back-header-name">Zaw Lwin Tun (Leo)</span>
+                        </div>
+                        <div class="back-text">4+ years in REST APIs, modular monoliths, Spring Security &amp; JWT. Mentoring juniors, actively learning AWS &amp; Docker for full-lifecycle backend.</div>
+                        <div class="skill-icons">
+                            <i class="fab fa-java"></i> <i class="fas fa-cloud"></i> <i class="fab fa-aws"></i> <i class="fab fa-docker"></i>
+                        </div>
+                        <div class="contact-row">
+                            <a href="https://github.com/zawlwintun816/zawlwintun816" target="_blank"><i class="fab fa-github"></i></a> 
+                            <a href="https://www.linkedin.com/in/zaw-lwin-tun-8163o742/" target="_blank"><i class="fab fa-linkedin-in"></i></a> 
+                            <a href="mailto:zawlwintun1412@gmail.com"><i class="fas fa-envelope"></i></a> 
+                            <a href="tel:+66911559536"><i class="fas fa-phone-alt"></i></a>
+                        </div>
+                        <div class="back-footer-note">
+                            <i class="fas fa-certificate"></i> IBM Java · AWS Junior · Spring Certified
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card-3d reveal-on-scroll delay-3">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="front-banner"></div>
+                        <div class="front-banner-grid"></div>
+                        <span class="front-hint"><i class="fas fa-sync-alt"></i> hover</span>
+                        <div class="front-avatar-wrap">
+							<div class="front-avatar">
+								<img th:src="@{/images/profiles/wph-profile.png}" alt="Wai Phyo Hlaing">
+								<span class="front-status-dot"></span>
+							</div>
+                        </div>
+                        <div class="front-body">
+                            <div class="front-name">WAI PHYO HLAING</div>
+                            <div class="front-job">
+                                <i class="fas fa-briefcase"></i> Software Dev.
+                            </div>
+                            <div class="front-location">
+                                <i class="fas fa-graduation-cap"></i> B.C.Sc (Computer Science)
+                            </div>
+                            <div class="front-tagline">
+                                <i class="fas fa-certificate"></i> JLPT N2
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-card-back">
+                        <div class="back-accent-bar"></div>
+                        <div class="back-header">
+                            <i class="fas fa-user-circle"></i> <span class="back-header-name">WAI PHYO HLAING</span>
+                        </div>
+                        <div class="back-text"><strong>Languages &amp; Tech:</strong> Java (GWT, J2EE, SpringBoot), HTML, CSS, Bootstrap, JavaScript.</div>
+                        <div class="skill-icons">
+                            <i class="fab fa-java"></i> <i class="fab fa-js-square"></i> <i class="fab fa-html5"></i>
+                        </div>
+                        <div class="contact-row">
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                            <a href="#"><i class="fas fa-phone"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                        <div class="back-footer-note">
+                            <i class="fas fa-code-branch"></i> Software Developer
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="team-remark reveal-on-scroll delay-1">
+            <div class="remark-content">
+                <i class="fa-solid fa-circle-nodes remark-icon"></i>
+                <p><strong>Flexible On-Demand Scaling:</strong> While these are our main orchestrators, we scale dynamically based on your project requirements. We work closely with a trusted ecosystem of freelance mobile developers, UI/UX designers, and QA testers to build complete, optimized product squads tailored specifically to your scope.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

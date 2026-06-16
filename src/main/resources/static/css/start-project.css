@@ -1,0 +1,214 @@
+.onboarding-section {
+    padding: 4rem 1.5rem 2rem 1.5rem;
+    background: var(--color-bg-page);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.onboarding-container {
+    max-width: 650px;
+    width: 100%;
+    margin: 0 auto;
+    background: transparent;
+    padding: 0;
+}
+
+.onboarding-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.onboarding-header h2 {
+    color: var(--color-text-white);
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #ffffff 30%, #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.onboarding-header p {
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+}
+
+.step-indicator {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    position: relative;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.step-indicator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-border-subtle);
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.step {
+    position: relative;
+    z-index: 2;
+    background: var(--color-bg-page);
+    padding: 0.3rem 1rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border-subtle);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step.active {
+    background: var(--color-secondary);
+    color: #1e1a2f;
+    border-color: var(--color-accent-gold);
+    box-shadow: 0 0 15px rgba(243, 156, 18, 0.15);
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+    animation: fadeFormIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.form-step h3 {
+    color: var(--color-text-white);
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 0.6rem;
+}
+
+.input-group {
+    margin-bottom: 1.2rem;
+}
+
+.input-group label {
+    display: block;
+    color: var(--color-text-light);
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+}
+
+.input-group input, 
+.input-group select, 
+.input-group textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px !important;
+    padding: 0.9rem 1.2rem;
+    color: var(--color-text-white);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus, 
+.input-group select:focus, 
+.input-group textarea:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--color-accent-gold);
+    box-shadow: 0 0 0 4px rgba(243, 156, 18, 0.15);
+}
+
+.input-group select option {
+    background: #1e1a2f; 
+    color: #fff;
+}
+
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.btn-prev, .btn-next, .btn-submit {
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-prev {
+    background: transparent;
+    border: 1px solid var(--color-border-glass);
+    color: var(--color-text-light);
+}
+
+.btn-prev:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-next, .btn-submit {
+    background: linear-gradient(105deg, var(--color-secondary), var(--color-secondary-end));
+    color: #1e1a2f;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.btn-next:hover, .btn-submit:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(105deg, var(--color-accent-gold), var(--color-accent-gold-dark));
+    box-shadow: 0 12px 30px rgba(243, 156, 18, 0.25);
+}
+
+@keyframes fadeFormIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .onboarding-section {
+        padding: 3rem 1rem 2rem 1rem;
+    }
+    .onboarding-header h2 {
+        font-size: 2rem;
+        margin-bottom: 0.3rem;
+    }
+    .onboarding-header {
+        margin-bottom: 1.5rem;
+    }
+    .step-indicator {
+        display: none;
+    }
+    .input-group {
+        margin-bottom: 1rem;
+    }
+    .input-group input, 
+    .input-group select, 
+    .input-group textarea {
+        padding: 0.8rem 1rem;
+    }
+    .form-navigation {
+        margin-top: 1.5rem;
+    }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title layout:title-pattern="$CONTENT_TITLE | $LAYOUT_TITLE">Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/plugins/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/plugins/fontawesome/css/all.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/header.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/animations.css}">
+<link rel="icon" th:href="@{/images/logo/logo.ico}"
+	type="image/x-icon">
+<th:block layout:fragment="page-css"></th:block>
+</head>
+<body class="pastel-gradient-bg">
+
+	<div class="d-flex flex-column min-vh-100">
+		<div th:replace="~{layouts/fragments/header :: header}"></div>
+
+		<main class="flex-grow-1">
+			<div class="">
+				<div layout:fragment="content"></div>
+			</div>
+		</main>
+
+		<div th:replace="~{layouts/fragments/footer :: footer}"></div>
+
+		<div class="overlay" id="overlay" style="display: none;"></div>
+	</div>
+
+
+
+	<div layout:fragment="modals"></div>
+
+	<input type="hidden" id="context-path" th:value="@{/}">
+	<input type="hidden" id="lang" th:value="${#locale.language}">
+
+	<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+	<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/js/scripts.js}"></script>
+	<script th:src="@{/js/animations.js}"></script>
+
+	<script th:inline="javascript">
+    var CONTEXT_PATH = $("#context-path").val();
+    const LANGUAGE = $("#lang").val();
+    $(document).ready(function() {
+        var currentPath = window.location.pathname;
+        $('.navbar-nav .nav-link').each(function() {
+            var link = $(this);
+            if (link.attr('href') === currentPath) {
+                link.addClass('active');
+            }
+        });
+        
+        
+        var currentUrl = new URL(window.location.href);
+        $('a[href*="?lang="]').each(function() {
+            var linkUrl = new URL(this.href, window.location.origin);
+            var lang = linkUrl.searchParams.get('lang');
+            currentUrl.searchParams.set('lang', lang);
+            this.href = currentUrl.toString();
+        });
+    });
+</script>
+
+	<div layout:fragment="scripts"></div>
+
+	<script th:inline="javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        var successMsg = [[${successMsg}]];
+        var errorMsg = [[${errorMsg}]];
+        if (successMsg) {
+            showSuccess(successMsg);
+        }
+        if (errorMsg) {
+            showError(errorMsg);
+        }
+    });
+</script>
+</body>
+</html>

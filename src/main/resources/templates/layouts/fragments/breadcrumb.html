@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Breadcrumb Fragment</title>
+</head>
+<body>
+<th:block th:fragment="breadcrumb">
+    <nav aria-label="breadcrumb" th:if="${breadcrumbs != null and !breadcrumbs.isEmpty()}">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" th:each="item, stat : ${breadcrumbs}"
+                th:classappend="${stat.last} ? 'active' : ''"
+                th:aria-current="${stat.last} ? 'page' : null">
+                <a th:if="${item.url != null and !stat.last}" th:href="${item.url}" th:text="${item.name}">Home</a>
+                <span th:if="${item.url == null or stat.last}" th:text="${item.name}">Current</span>
+            </li>
+        </ol>
+    </nav>
+
+    <nav aria-label="breadcrumb" th:if="${breadcrumbs == null or breadcrumbs.isEmpty()}">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Current page</li>
+        </ol>
+    </nav>
+</th:block>
+</body>
+</html>

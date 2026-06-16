@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/base}">
+<head>
+    <title>Flexitech – Digital Studio</title>
+    <th:block layout:fragment="page-css">
+    	<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}">
+    </th:block>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div th:replace="~{pages/fragments/hero :: hero}"></div>
+        <div th:replace="~{pages/fragments/about :: about}"></div>
+        <div th:replace="~{pages/fragments/services :: services}"></div>
+        <div th:replace="~{pages/fragments/projects :: projects}"></div>
+        <div th:replace="~{pages/fragments/team-showcase :: team-showcase}"></div>
+        <div th:replace="~{pages/fragments/contact :: contact}"></div>
+    </div>
+</body>
+</html>
