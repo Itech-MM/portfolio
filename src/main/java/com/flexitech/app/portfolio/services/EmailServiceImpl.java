@@ -37,4 +37,21 @@ public class EmailServiceImpl implements EmailService {
 		mailSender.send(message);
 	}
 
+	@Override
+	public void contactUs(String name, String email, String description) {
+		SimpleMailMessage message = new SimpleMailMessage();
+
+		message.setFrom(email);
+		message.setTo(teamEmail);
+		message.setSubject("★ New General Inquiry from " + name);
+
+		String emailBody = String.format(
+				"Sender Name: %s\nEmail Address: %s\n\nMessage / Description:\n%s",
+				name, email, description);
+
+		message.setText(emailBody);
+
+		mailSender.send(message);
+	}
+
 }

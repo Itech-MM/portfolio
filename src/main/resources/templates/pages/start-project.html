@@ -5,6 +5,7 @@
 <head>
     <title>Start a Project – Flexitech</title>
     <link rel="stylesheet" th:href="@{/css/start-project.css}" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
     <div layout:fragment="content">
@@ -78,7 +79,9 @@
                         </div>
                         <div class="form-navigation">
                             <button type="button" class="btn-prev" onclick="prevStep(3)"><i class="fa-solid fa-arrow-left"></i> Back</button>
-                            <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> Submit Request</button>
+                            <button type="submit" class="btn-submit" id="submitBtn">
+                                <span class="btn-text"><i class="fa-solid fa-paper-plane"></i> Submit Request</span>
+                            </button>
                         </div>
                     </div>
 
@@ -86,7 +89,7 @@
             </div>
         </section>
 
-        <script>
+        <script th:inline="javascript">
             let currentStep = 1;
 
             function showStep(step) {
@@ -126,6 +129,35 @@
                 currentStep = current - 1;
                 showStep(currentStep);
             }
+
+            $(document).ready(function() {
+                $('#projectForm').on('submit', function(e) {
+                    e.preventDefault();
+
+                    const $form = $(this);
+                    const $submitBtn = $('#submitBtn');
+                    
+                    $submitBtn.prop('disabled', true);
+                    $submitBtn.html('<i class="fa-solid fa-spinner fa-spin"></i> Loading...'); 
+
+                    $.ajax({
+                        url: $form.attr('action'),
+                        type: $form.attr('method'),
+                        data: $form.serialize(),
+                        success: function(response) {
+                            const successUrl = /*[[@{/project-success}]]*/ '/project-success';
+                            window.location.href = successUrl;
+                        },
+                        error: function(xhr, status, error) {
+                            alert('Something went wrong. Please try again.');
+                            console.error(error);
+                            
+                            $submitBtn.prop('disabled', false);
+                            $submitBtn.html('<i class="fa-solid fa-paper-plane"></i> Submit Request');
+                        }
+                    });
+                });
+            });
         </script>
     </div>
 </body>

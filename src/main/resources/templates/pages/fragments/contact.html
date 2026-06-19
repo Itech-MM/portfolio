@@ -15,20 +15,45 @@
           <a href="https://github.com/Itech-MM" target="_blank"><i class="fab fa-github"></i></a>
           <a href="#"  target="_blank"><i class="fab fa-linkedin-in"></i></a>
           <a href="https://t.me/flexitechmm" target="_blank"><i class="fa-brands fa-telegram"></i></a>
-          <a href="#" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.facebook.com/flexitech9mm?mibextid=ZbWKwL" target="_blank"><i class="fa-brands fa-facebook"></i></a>
         </div>
       </div>
-      <form class="contact-form reveal-on-scroll delay-1" th:action="@{/contact}" th:method="post">
-        <input type="text" placeholder="Your name" required>
-        <input type="email" placeholder="Email address" required>
-        <textarea rows="4" placeholder="Tell us about your project..."></textarea>
-        <button type="submit" class="btn-primary"><i class="fas fa-arrow-right"></i> Send message</button>
+      
+      <form class="contact-form reveal-on-scroll delay-1" th:action="@{/contact}" th:method="post" id="contactForm">
+        
+        <div class="form-body">
+          <div class="input-wrapper">
+            <input type="text" name="name" placeholder="Your name" required>
+          </div>
+          
+          <div class="input-wrapper">
+            <input type="email" name="email" placeholder="Email address" required>
+          </div>
+          
+          <div class="input-wrapper">
+            <textarea name="description" rows="4" placeholder="Tell us about your project..." required></textarea>
+          </div>
+          
+          <div id="contactErrorMessage" class="msg-error" style="display: none;"></div>
+
+          <button type="submit" class="btn-primary" id="contactSubmitBtn">
+              <span class="btn-content"><i class="fas fa-arrow-right"></i> Send message</span>
+          </button>
+        </div>
+
+        <div class="form-success-card" id="formSuccessCard" style="display: none;">
+          <div class="success-icon-wrapper">
+            <div class="success-icon-circle">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+          <h3>Message Sent!</h3>
+          <p>Thank you for reaching out. Our team will review your requirements and respond within 24 hours.</p>
+        </div>
+
       </form>
     </div>
   </section>
 
-  <style>
-    
-  </style>
 </body>
 </html>

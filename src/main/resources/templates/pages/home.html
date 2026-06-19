@@ -18,5 +18,8 @@
         <div th:replace="~{pages/fragments/team-showcase :: team-showcase}"></div>
         <div th:replace="~{pages/fragments/contact :: contact}"></div>
     </div>
+    <div layout:fragment="scripts">
+    	<script th:src="@{/js/home.js}"></script>
+    </div>
 </body>
 </html>
